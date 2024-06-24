@@ -31,6 +31,7 @@ This hands-on Arduino coding workshop is designed to elevate your programming sk
 
 - Introduction to AI
 - AI in Robotics
+- Natural Language Processing 🤔
 - Research Idea Development
 
 **Note**: 🤔 indicates advanced topics that will be discussed briefly.
