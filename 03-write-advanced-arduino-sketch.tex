@@ -1,0 +1,200 @@
+\documentclass[sectionframe]{oxblue-beamer}
+
+\title{Write Advanced Arduino Sketch}
+\author[Mape, R. N. R.]{Rixdon Niño R. Mape}
+\institute{
+    College of Science \\
+    Computer Science and Information Technology Department \\
+    Bicol University
+}
+\date{02 July 2024}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Debugging Techniques}
+
+\begin{frame}{Types of Programming Errors}
+\begin{itemize}
+    \item \textbf{Syntax errors} prevent the program from compiling. They are usually caused by typos, missing semicolons, or mismatched parentheses.
+    \item \textbf{Runtime errors} cause the program to crash or behave unexpectedly while it is running. They are usually caused by logical errors, such as dividing by zero or accessing an array out of bounds.
+    \item \textbf{Logic errors} cause the program to produce incorrect results. They are usually caused by mistakes in the algorithm or the implementation of the program.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Debugging with Serial Communication}
+\begin{itemize}
+    \item Print debugging is a technique where you insert print statements into your code to output the values of variables or the flow of the program.
+    \item In Arduino, you can use the \texttt{Serial} library to send data from the Arduino to your computer over a USB connection.
+    \item Monitor the values of variables, the flow of the program, and the output of functions using the \texttt{Serial.print()} and \texttt{Serial.println()} functions.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Debugging with Serial Communication (cont'd)}
+\begin{minted}{arduino}
+...
+
+void loop() {
+    int sensorValue = analogRead(A0);
+
+    Serial.print("Sensor value: ");
+    Serial.println(sensorValue);
+
+    if (sensorValue > 512) {
+        Serial.println("High value detected!");
+        digitalWrite(LED_PIN, HIGH);
+    } else {
+        Serial.println("Low value detected!");
+        digitalWrite(LED_PIN, LOW);
+    }
+
+    delay(1000);
+}
+\end{minted}
+\end{frame}
+
+\begin{frame}{Debugger in Arduino IDE 2}
+\begin{itemize}
+    \item The Arduino IDE 2 has a built-in debugger that allows you to set breakpoints, step through your code, and inspect the values of variables.
+    \item Enable "Optimize for Debugging" option in the "Sketch" menu
+    \item \textbf{Breakpoints} are markers that you can place in your code to pause the program at a specific line.
+    \item \textbf{Play/Pause} button to start or pause the program.
+    \item \textbf{Step Over} button to execute the current line and move to the next line.
+    \item \textbf{Demo:} Live debugging in Arduino IDE 2
+\end{itemize}
+\end{frame}
+
+\section{Functions and Libraries}
+
+\begin{frame}[fragile]{Creating Functions}
+\begin{minted}{arduino}
+int sum(int a, int b);
+
+void setup() {
+    Serial.begin(9600);
+    int result = sum(5, 3);
+    Serial.print("The sum is: ");
+    Serial.println(result);
+}
+
+void loop() {
+    // Do nothing
+}
+
+int sum(int a, int b) {
+    return a + b;
+}
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Variable Scope}
+\begin{minted}{arduino}
+int globalVariable = 10;
+
+void setup() {
+    Serial.begin(9600);
+    int localVariable = 5;
+    Serial.print("Global variable: ");
+    Serial.println(globalVariable);
+    Serial.print("Local variable: ");
+    Serial.println(localVariable);
+}
+
+void loop() {
+    // Uncomment the following line to see an error
+    // Serial.print("Local variable: ");
+    // Serial.println(localVariable);
+}
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Creating Libraries}
+\begin{itemize}
+    \item Create a new folder in the \texttt{libraries} directory of your Arduino sketchbook.
+    \item Create a new file in the folder with the same name as the library.
+    \item Define the library functions in the file.
+    \item Include the library in your sketch using the \texttt{\#include} directive.
+    \item \textbf{Demo:} Creating a custom library
+\end{itemize}
+\end{frame}
+
+\section{Arrays and Strings}
+
+\begin{frame}[fragile]{Arrays}
+\begin{minted}{arduino}
+int values[] = {1, 2, 3, 4, 5};
+
+void setup() {
+    Serial.begin(9600);
+    for (int i = 0; i < 5; i++) {
+        Serial.print("Value at index ");
+        Serial.print(i);
+        Serial.print(": ");
+        Serial.println(values[i]);
+    }
+}
+
+...
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Manipulating Arrays}
+\begin{minted}{arduino}
+int values[] = {1, 2, 3, 4, 5};
+
+void setup() {
+    Serial.begin(9600);
+    values[2] = 10;
+    for (int i = 0; i < 5; i++) {
+        Serial.print("Value at index ");
+        Serial.print(i);
+        Serial.print(": ");
+        Serial.println(values[i]);
+    }
+}
+
+...
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Strings}
+\begin{minted}{arduino}
+String message = "Hello, Arduino!";
+
+void setup() {
+    Serial.begin(9600);
+    Serial.println(message);
+}
+
+...
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Manipulating Strings}
+\begin{minted}{arduino}
+String message = "Hello, Arduino!";
+
+void setup() {
+    Serial.begin(9600);
+    message += " How are you?";
+    Serial.println(message);
+
+    if (message.startsWith("Hello")) {
+        Serial.println("The message starts with 'Hello'");
+    }
+
+    Serial.print("The length of the message is: ");
+    Serial.println(message.length());
+}
+
+...
+\end{minted}
+\end{frame}
+
+% TODO: Add content for memory management
+% TODO: Add content for AVR C/C++ programming
+
+\end{document}
