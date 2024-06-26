@@ -1,0 +1,301 @@
+\documentclass[sectionframe]{oxblue-beamer}
+
+\title{Write Basic Arduino Sketch}
+\author[Mape, R. N. R.]{Rixdon Niño R. Mape}
+\institute{
+    College of Science \\
+    Computer Science and Information Technology Department \\
+    Bicol University
+}
+\date{02 July 2024}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Arduino IDE Tour}
+
+\begin{frame}{Arduino Integrated Development Environment (IDE)}
+\begin{itemize}
+    \item Software used to write and upload code to Arduino boards
+    \item Download from \url{https://www.arduino.cc/en/software}
+    \item \textbf{Demo:} Tour of the Arduino IDE
+\end{itemize}
+\end{frame}
+
+\section{Basic Sketch Structure}
+
+\begin{frame}[fragile]{Blinking LED}
+\begin{minted}{arduino}
+void setup() {
+    pinMode(13, OUTPUT);
+}
+
+void loop() {
+    digitalWrite(13, HIGH);
+    delay(1000);
+    digitalWrite(13, LOW);
+    delay(1000);
+}
+\end{minted}
+\end{frame}
+
+\section{Variables and Data Types}
+
+\begin{frame}[fragile]{Variable Definition}
+\begin{minted}{arduino}
+int ledPin = 13;
+
+void setup() {
+    pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+    digitalWrite(ledPin, HIGH);
+    delay(1000);
+    digitalWrite(ledPin, LOW);
+    delay(1000);
+}
+\end{minted}
+\end{frame}
+
+\begin{frame}{Data Types}
+\begin{table}
+\footnotesize
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Numeric Type} & \textbf{Bytes} & \textbf{Range} \\ \hline
+\texttt{bool} & 1 & true (1) or false (0) \\ \hline
+\texttt{byte} & 1 & 0 to 255 \\ \hline
+\texttt{int} & 2 & -32,768 to 32,767 \\ \hline
+\texttt{unsigned int} & 2 & 0 to 65,535 \\ \hline
+\texttt{long} & 4 & -2,147,483,648 to 2,147,483,647 \\ \hline
+\texttt{unsigned long} & 4 & 0 to 4,294,967,295 \\ \hline
+\texttt{float} & 4 & -3.4028235E+38 to 3.4028235E+38 \\ \hline
+\end{tabular}
+\end{table}
+\end{frame}
+
+\section{Serial Communication}
+
+\begin{frame}[fragile]{Serial Communication}
+\begin{minted}{arduino}
+int ledPin = 13;
+
+void setup() {
+    pinMode(ledPin, OUTPUT);
+    Serial.begin(9600);
+}
+
+void loop() {
+    digitalWrite(ledPin, HIGH);
+    Serial.println("LED ON");
+    delay(1000);
+    digitalWrite(ledPin, LOW);
+    Serial.println("LED OFF");
+    delay(1000);
+}
+\end{minted}
+\end{frame}
+
+\section{Mathematical Operations}
+
+\begin{frame}[fragile]{Arithmetic Operators}
+\begin{minted}{arduino}
+int a = 5;
+int b = 3;
+
+int sum = a + b;                        // 8
+int difference = a - b;                 // 2
+int product = a * b;                    // 15
+int quotient = a / b;                   // 1 (integer division)
+int remainder = a % b;                  // 2
+
+float fQuotient = (float)a / b;         // 1.66667
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Grouping and Precedence}
+\begin{minted}{arduino}
+int a = 5;
+int b = 3;
+
+int result = a + b * 2;                 // 11
+int groupedResult = (a + b) * 2;        // 16
+
+result = a + b * 2 / 3;                 // 6
+groupedResult = (a + b) * 2 / 3;        // 4
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Equality and Relational Operators}
+\begin{minted}{arduino}
+int a = 5;
+int b = 3;
+
+bool isEqual = (a == b);                // false (0)
+bool isNotEqual = (a != b);             // true (1)
+
+bool isGreater = (a > b);               // true (1)
+bool isLess = (a < b);                  // false (0)
+bool isGreaterOrEqual = (a >= b);       // true (1)
+bool isLessOrEqual = (a <= b);          // false (0)
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Logical Operators}
+\begin{minted}{arduino}
+int a = 5;
+int b = 3;
+
+bool andResult = (a > 3) && (b < 5);    // true (1)
+bool orResult = (a > 3) || (b > 5);     // true (1)
+bool notResult = !(a > 3);              // false (0)
+\end{minted}
+\end{frame}
+
+\section{Control Structures}
+
+\subsubsection{Conditional Statements}
+
+\begin{frame}[fragile]{\texttt{if} Statement}
+\begin{minted}{arduino}
+int a = 5;
+int b = 3;
+
+if (a > b) {
+    Serial.println("a is greater than b");
+}
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{if-else} Statement}
+\begin{minted}{arduino}
+int a = 5;
+int b = 3;
+
+if (a > b) {
+    Serial.println("a is greater than b");
+} else {
+    Serial.println("a is less than or equal to b");
+}
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Nested \texttt{if-else} Statement}
+\begin{minted}{arduino}
+int a = 5;
+int b = 3;
+
+if (a > b) {
+    Serial.println("a is greater than b");
+} else {
+    if (a < b) {
+        Serial.println("a is less than b");
+    } else {
+        Serial.println("a is equal to b");
+    }
+}
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Nested \texttt{if-else} Statement (cont'd)}
+\begin{minted}{arduino}
+int a = 5;
+int b = 3;
+
+if (a > b) {
+    Serial.println("a is greater than b");
+} else if (a < b) {
+    Serial.println("a is less than b");
+} else {
+    Serial.println("a is equal to b");
+}
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Switch Multiple-Selection Statement}
+\begin{minted}{arduino}
+char direction = 'F';
+
+switch (direction) {
+    case 'F':
+        // Code for forward movement
+        break;
+    case 'B':
+        // Code for backward movement
+        break;
+    case 'R':
+        // Code for right turn
+        break;
+    case 'L':
+        // Code for left turn
+        break;
+    default:
+        // Code for invalid direction
+        break;
+}
+\end{minted}
+\end{frame}
+
+\subsubsection{Looping Statements}
+
+\begin{frame}[fragile]{\texttt{for} Counter-Controlled Loop}
+\begin{minted}{arduino}
+for (int i = 0; i < 5; i++) {
+    Serial.print("Iteration ");
+    Serial.println(i);
+}
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{while} Condition-Controlled Loop}
+\begin{minted}{arduino}
+int i = 0;
+
+while (i < 5) {
+    Serial.print("Iteration ");
+    Serial.println(i);
+    i++;
+}
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{do-while} Loop}
+\begin{minted}{arduino}
+int i = 0;
+
+do {
+    Serial.print("Iteration ");
+    Serial.println(i);
+    i++;
+} while (i < 5);
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{break} Statement}
+\begin{minted}{arduino}
+for (int i = 0; i < 10; i++) {
+    if (i == 5) {
+        break;
+    }
+    Serial.println(i);
+}
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{continue} Statement}
+\begin{minted}{arduino}
+for (int i = 0; i < 10; i++) {
+    if (i % 2 == 0) {
+        continue;
+    }
+    Serial.println(i);
+}
+\end{minted}
+\end{frame}
+
+\end{document}

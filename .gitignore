@@ -9,3 +9,4 @@ _minted*
 *.log
 *.out
 *.fls
+*.vrb
