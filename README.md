@@ -1,16 +1,16 @@
 # Arduino Coding Workshop
 
-This hands-on Arduino coding workshop is designed to elevate your programming skills by teaching you how to tackle complex coding challenges in robotics.
+This hands-on Arduino coding workshop is designed to elevate students' coding skills by teaching them how to tackle practical coding challenges in robotics.
 
-## Session 1: Problem Solving in Coding
+## Session 1: Code to Solve Problems
 
-- Overview of Coding
-- Problem-Solving Strategies
-- Algorithm Development
-- Coding Standards
-- Project Management 🤔
+- Coding Overview
+- Coding in Robotics
+- Software Development Method
+- Problem Solving Strategies
+- Code Quality
 
-## Session 2: Getting Started with Arduino
+## Session 2: Write Basic Arduino Sketch
 
 - Arduino IDE Tour
 - Basic Sketch Structure
@@ -19,7 +19,7 @@ This hands-on Arduino coding workshop is designed to elevate your programming sk
 - Serial Communication
 - Control Structures
 
-## Session 3: Advanced Arduino Coding
+## Session 3: Write Advanced Arduino Sketch
 
 - Debugging Techniques
 - Functions and Libraries
@@ -27,7 +27,7 @@ This hands-on Arduino coding workshop is designed to elevate your programming sk
 - Memory Management 🤔
 - AVR C/C++ Programming 🤔
 
-## Session 4: Intelligent Machines
+## Session 4: Develop AI Research Idea
 
 - Introduction to AI
 - AI in Robotics
