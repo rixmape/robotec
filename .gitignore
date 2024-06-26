@@ -1,0 +1,11 @@
+_minted*
+*.pdf
+*.nav
+*.snm
+*.synctex.gz
+*.synctex.gz(busy)
+*.aux
+*.fdb_latexmk
+*.log
+*.out
+*.fls

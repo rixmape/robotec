@@ -4,10 +4,8 @@ This hands-on Arduino coding workshop is designed to elevate students' coding sk
 
 ## Session 1: Code to Solve Problems
 
-- Coding Overview
 - Coding in Robotics
-- Software Development Method
-- Problem Solving Strategies
+- Problem Solving Framework
 - Code Quality
 
 ## Session 2: Write Basic Arduino Sketch
