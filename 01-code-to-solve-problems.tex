@@ -1,6 +1,8 @@
 \documentclass[sectionframe]{oxblue-beamer}
 
-\title{Code to Solve Problems}
+\usepackage{tikz}
+
+\title{Introduction to Coding}
 \author[Mape, R. N. R.]{Rixdon Niño R. Mape}
 \institute{
     College of Science \\
@@ -15,124 +17,190 @@
 \titlepage
 \end{frame}
 
-\section{Coding in Robotics}
+\section{Computer Abstraction}
 
 \begin{frame}{What is a computer?}
+A machine that receives, stores, transforms, and outputs data of all kinds, such as numbers, text, images, audio, graphics, etc.
+
+\bigskip Categorized by size and performance.
+
+\bigskip Used in various fields, such as education, business, entertainment, research, and more.
+\end{frame}
+
+\begin{frame}{Logical units of a computer}
 \begin{itemize}
-    \item A machine that receives, stores, transforms, and outputs data
-    \item Data of all kinds: numbers, text, images, sounds, etc.
-    \item Logical units: input, output, memory, arithmetic and logic unit (ALU), and central processing unit (CPU), and secondary storage unit.
-    \item Computer without software is like a car without a driver.
+    \item Input unit
+    \item Output unit
+    \item Memory unit
+    \item Arithmetic and logic unit (ALU)
+    \item Central processing unit (CPU)
+    \item Secondary storage unit
 \end{itemize}
 \end{frame}
 
-\begin{frame}{What is program?}
-\begin{itemize}
-    \item Instructions that let a computer perform a specific task
-    \item Developed using a programming language
-    \item Programming languages: Python, Java, C++, etc.
-    \item \textbf{Demo:} C program that prints "Hello, World!"
-    \item Compilation translates source code to machine code
-    \item An integrated development environment (IDE) simplifies the development process
-\end{itemize}
+\begin{frame}{Programming languages}
+\begin{columns}
+\begin{column}{0.3\textwidth}
+    \begin{tikzpicture}[node distance=2cm]
+        \tikzstyle{box} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=blue!10]
+
+        \node (high) [box] {High-Level Language};
+        \node (assembly) [box, below of=high] {Assembly Language};
+        \node (machine) [box, below of=assembly] {Machine Code};
+
+        \draw [->,thick] (high) -- (assembly);
+        \draw [->,thick] (assembly) -- (machine);
+    \end{tikzpicture}
+\end{column}
+\begin{column}{0.6\textwidth}
+    Programming in machine code is slow and error-prone. So, high-level languages were developed to make the process easier.
+
+    \par\bigskip \begin{block}{Live Demo}
+        Write, compile, and run a C program.
+    \end{block}
+\end{column}
+\end{columns}
 \end{frame}
 
-\begin{frame}{How is coding used in robotics?}
-\begin{itemize}
-    \item Actuation
-    \item Perception
-    \item Decision-making
-    \item Machine learning
-    \item Human-robot interaction
-    \item System integration
-    \item Simulation
-\end{itemize}
-\end{frame}
-
-\section{Problem Solving Framework}
+\section{Software Development Method}
 
 \begin{frame}{Define the problem}
-\begin{itemize}
-    \item State the problem clearly to gain clear understanding of what is required for its solution.
-    \item Eliminate unimportant details and focus on the core problem.
-    \item \textbf{Sorting Problem:} \par\smallskip Design an autonomous robot capable of sorting packages by size and destination in a logistics warehouse. The robot should operate with high accuracy and efficiency, reducing manual sorting tasks and improving overall processing speed.
-\end{itemize}
+State the problem clearly to gain a clear understanding of what is required for its solution. Eliminate unimportant details and focus on the core problem.
+
+\par\bigskip \textbf{Sorting Robot Problem:}
+
+Design an autonomous robot capable of sorting packages by size and destination in a logistics warehouse. The robot should operate with high accuracy and efficiency, reducing manual sorting tasks and improving overall processing speed.
 \end{frame}
 
 \begin{frame}{Analyze the problem}
+Apply \textbf{computational thinking} to analyze complex problems and formulate effective solutions. These techniques can help you:
+
 \begin{itemize}
-    \item Identify the problem inputs, outputs, and constraints.
-    \item If the problem is not defined and analyzed properly, you will solve the wrong problem.
-    \item \textbf{Task:} Analyze the sorting problem.
+    \item Break down the problem into smaller parts
+    \item Identify patterns and relationships
+    \item Focus on the essential details
+    \item Develop a step-by-step plan
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Develop a solution}
+\begin{frame}{Analyze the problem (cont'd)}
+\textbf{Sorting Robot Problem}
+
+\par\bigskip Break down the problem into smaller parts.
+
+\par\bigskip How will the robot:
 \begin{itemize}
-    \item Requires developing an \textbf{algorithm} to solve the problem
-    \item Use \textbf{top-down design} by first listing major steps
-    \item Break down the major steps into smaller steps through \textbf{stepwise refinement}
-    \item To verify the algorithm, perform a \textbf{desk check} by hand
-    \item \textbf{Task:} Write an algorithm for the sorting problem. Then, break down the algorithm into smaller steps.
+    \item identify and localize packages?
+    \item physically interact with packages?
+    \item move around the warehouse?
+    \item decide where to place each package?
+    \item interact with other systems in the warehouse?
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Analyze the problem (cont'd)}
+\textbf{Sorting Robot Problem}
+
+\par\bigskip Identify patterns and relationships.
+
+\par\bigskip \begin{itemize}
+    \item Analyze historical sorting data to identify common package sizes, shapes, destinations, and sorting patterns.
+    \item Learn from human sorters to observe their techniques, decision-making processes, and common challenges.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Analyze the problem (cont'd)}
+\textbf{Sorting Robot Problem}
+
+\par\bigskip Focus on the essential details.
+
+\par\bigskip Create simplified models for:
+\begin{itemize}
+    \item warehouse layout (e.g., grid-based map)
+    \item package (e.g., size, weight, destination)
+    \item robot capabilities (e.g., movement, sensors, manipulators)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Design a solution}
+
+Requires developing an \textbf{algorithm}, a replicable step-by-step process to accomplish a task.
+
+\bigskip Use \textbf{top-down design} by first listing major steps, then breaking them down into smaller steps using \textbf{stepwise refinement}.
+\end{frame}
+
+\begin{frame}[fragile]{Design a solution (cont'd)}
+\textbf{Sorting Robot Problem}
+
+\bigskip Top-level algorithm:
+
+\begin{verbatim}
+1. Initialize the robot
+2. Sort packages until none remain
+3. Shutdown the robot
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Design a solution (cont'd)}
+Refined algorithm:
+
+\begin{verbatim}
+1. Initialize:
+    a. Load warehouse map
+    b. Load package data
+    c. Start communication with warehouse systems
+2. While packages remain to be sorted:
+    a. Scan the environment for packages
+    b. Recognize package size and destination
+    c. Determine where to place the package
+    d. Navigate to the package
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Design a solution (cont'd)}
+Refined algorithm (cont'd):
+
+\begin{verbatim}
+    e. Pick up the package
+    f. Move to the designated location
+    g. Place the package
+    h. Notify the warehouse of the package's location
+3. Shutdown:
+    a. Report completion to the warehouse
+    b. Safely power down the robot
+\end{verbatim}
 \end{frame}
 
 \begin{frame}{Implement the solution}
-\begin{itemize}
-    \item Translate the algorithm using a programming language
-    \item Use documentation to explain complex parts
-    \item \textbf{Demo:} A Python program that simulates the solution to the sorting problem
-\end{itemize}
+Translate the algorithm into the programming language used by the robot.
+
+\bigskip Write clean, readable, and maintainable code following established conventions and standards.
+
+\bigskip Use Integrated Development Environments (IDEs), version control systems, and other tools to facilitate coding and collaboration.
 \end{frame}
 
-\begin{frame}{Test the solution}
+\begin{frame}{Test the program}
+Use different testing methods to ensure the software works properly:
+
 \begin{itemize}
-    \item Verify that the program works as expected
-    \item Use different set of test data to ensure the program is robust
-    \item Identify and fix any bugs
+    \item Unit testing (individual components)
+    \item Integration testing (module interaction)
+    \item System testing (simulation and real-world scenarios)
+    \item Acceptance testing (stakeholder involvement)
 \end{itemize}
+
+\bigskip \begin{block}{Question}
+    How would you test the sorting robot program?
+\end{block}
 \end{frame}
 
-\begin{frame}{Refine the solution}
-\begin{itemize}
-    \item Review the code for efficiency.
-    \item Optimize the algorithms for better performance.
-    \item Refactor for readability and maintainability.
-\end{itemize}
-\end{frame}
+\begin{frame}{Refine the program}
+\textbf{Refactor} the code by improving the internal structure of the code without changing its external behavior, making it easier to understand and modify.
 
-\section{Code Quality}
+\bigskip Write detailed \textbf{documentation} to help future developers understand the code and how to use or modify it.
 
-\begin{frame}{Readability}
-\begin{itemize}
-    \item Use a consistent coding style, including indentation, naming conventions, and commenting practices.
-    \item Choose meaningful variable and function names that reflect their purpose and functionality.
-    \item Break code into smaller, modular functions and classes.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Performance}
-\begin{itemize}
-    \item Analyze and optimize algorithms to reduce time and resource complexity.
-    \item Be cautious about memory usage and avoid memory leaks.
-    \item Implement caching mechanisms to reduce redundant computations.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Maintainability}
-\begin{itemize}
-    \item Regularly refactor code to eliminate duplication, improve organization, and simplify complex logic.
-    \item Use version control systems like Git to track changes and collaborate with other developers effectively.
-    \item Write clear and concise documentation, including inline comments and high-level project documentation.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Reliability}
-\begin{itemize}
-    \item Implement robust error-handling mechanisms to gracefully handle exceptions and errors.
-    \item To make sure your code is up to mark make sure you have all the tests you need from unit tests to integration tests to error scenarios.
-    \item In distributed systems, introduce redundancy and failover mechanisms to ensure continuous service availability.
-\end{itemize}
+\bigskip Gather \textbf{feedback} from users to identify areas for improvement and prioritize new features or fixes.
 \end{frame}
 
 \end{document}
